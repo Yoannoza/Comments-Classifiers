@@ -24,7 +24,7 @@ with st.form("commentaire_form"):
     user_input_main = st.text_input("Entrez votre Commentaire ici")
 
     # Bouton de prédiction centré avec une couleur simple
-    bouton_prediction = st.form_submit_button(":blue[Prédire le Type de Commentaire]", help="Appuyez pour prédire")
+    bouton_prediction = st.form_submit_button("Prédire le Type de Commentaire", help="Appuyez pour prédire")
 
 # Conditions pour la prédiction et le stockage des commentaires
 if bouton_prediction:
