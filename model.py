@@ -31,13 +31,16 @@ knn_model.fit(X, data['mood'])
 
 # Prediction
 def predict(text):
-    clean_sentences(text)
+    if text:
+        clean_sentences(text)
 
-    vectorised_text = vectorizer.transform(text)
+        vectorised_text = vectorizer.transform(text)
 
-    prediction = knn_model.predict(vectorised_text)
+        prediction = knn_model.predict(vectorised_text)
 
-    return prediction[0]
+        return prediction[0]
+    else: 
+        print("Text is none")
 
 
 # Afficher les données dans la page principale
