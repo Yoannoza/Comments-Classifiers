@@ -59,7 +59,7 @@ with st.form("commentaire_form"):
 if bouton_prediction:
     if input:
         result = predict(input)
-        if result == "Négatif":
+        if result == "Positif":
             st.success(f" ✅ Commentaire {result} !!!")
         else:
             st.warning(f" ❌ Commentaire {result} !!!")
