@@ -2,17 +2,41 @@ import streamlit as st
 import pandas as pd
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.model_selection import train_test_split
+
+
+import string
+def clean_sentences(text):
+  # Conversion en minuscules
+    text = str(text).lower()
+
+    # Suppression de la ponctuation
+    text = ''.join([char for char in text if char not in string.punctuation])
+    if text:
+      return text
+    else:
+      print("Un probleme")
+
+# Test du modèle
+def predict(text):
+    clean_sentences(text)
+
+    vectorised_text = vectorizer.transform(text)
+
+    prediction = knn_model.predict(vectorised_text)
+
+    return prediction[0]
+
 
 # Charger le dataset
 data = pd.read_csv('dataset.csv')
 
-# Charger le modèle KNN
+# Vectorization
 vectorizer = TfidfVectorizer()
 X = vectorizer.fit_transform(data['Comment'])
-X_train, X_test, Y_train, Y_test = train_test_split(X, data['mood'], test_size=0.2, random_state=42)
+
+# Modele
 knn_model = KNeighborsClassifier(n_neighbors=1)
-knn_model.fit(X_train, Y_train)
+knn_model.fit(X, data['mood'])
 
 
 # Afficher les données dans la page principale
@@ -21,20 +45,19 @@ st.title("Classification des Commentaires Positifs ou Negatifs avec KNN")
 # Utiliser un formulaire au lieu d'un champ de texte
 with st.form("commentaire_form"):
     # Afficher le formulaire d'entrée de texte
-    user_input_main = st.text_input("Entrez votre Commentaire ici")
+    inout = st.text_input("Entrez votre Commentaire ici")
 
     # Bouton de prédiction centré avec une couleur simple
-    bouton_prediction = st.form_submit_button(":blue[Prédire le Type de Commentaire]", help="Appuyez pour prédire")
+    bouton_prediction = st.form_submit_button("Prédire le Type de Commentaire", help="Appuyez pour prédire")
 
 # Conditions pour la prédiction et le stockage des commentaires
 if bouton_prediction:
-    if user_input_main:
-        vectorized_text_main = vectorizer.transform([user_input_main])
-        prediction_main = knn_model.predict(vectorized_text_main)
-        if prediction_main[0] == "Positif":
-            st.success(f"Commentaire {prediction_main[0]} !!!", icon="✅")
+    if input:
+        result = predict(input)
+        if result == "Positif":
+            st.success(f"Commentaire {result} !!!", icon="✅")
         else:
-            st.warning(f"Commentaire {prediction_main[0]} !!!", icon="❌")
+            st.warning(f"Commentaire {result} !!!", icon="❌")
     else:
         st.warning("Veuillez entrer un commentaire pour la prédiction.")
 
