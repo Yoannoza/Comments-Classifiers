@@ -16,16 +16,6 @@ def clean_sentences(text):
     else:
       print("Un probleme")
 
-# Test du modèle
-def predict(text):
-    clean_sentences(text)
-
-    vectorised_text = vectorizer.transform(text)
-
-    prediction = knn_model.predict(vectorised_text)
-
-    return prediction[0]
-
 
 # Charger le dataset
 data = pd.read_csv('dataset.csv')
@@ -37,6 +27,17 @@ X = vectorizer.fit_transform(data['Comment'])
 # Modele
 knn_model = KNeighborsClassifier(n_neighbors=1)
 knn_model.fit(X, data['mood'])
+
+
+# Prediction
+def predict(text):
+    clean_sentences(text)
+
+    vectorised_text = vectorizer.transform(text)
+
+    prediction = knn_model.predict(vectorised_text)
+
+    return prediction[0]
 
 
 # Afficher les données dans la page principale
