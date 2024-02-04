@@ -39,7 +39,7 @@ def predict(text):
 
         prediction = knn_model.predict(vectorised_text)
 
-        return prediction[0]
+        return prediction
     else: 
         st.warning(f"Text is None")
 
