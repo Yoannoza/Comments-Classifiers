@@ -32,8 +32,9 @@ knn_model.fit(X, data['mood'])
 # Prediction
 def predict(text):
     if text:
+        st.warning(f"before:{type(text)}")
         clean_sentences(text)
-
+        st.warning(f"after:{type(text)}")
         vectorised_text = vectorizer.transform(text)
 
         prediction = knn_model.predict(vectorised_text)
@@ -44,8 +45,8 @@ def predict(text):
 
 
 # Afficher les données dans la page principale
-st.title(" Classification des Commentaires Positifs ou Negatifs avec KNN")
- 
+st.title("Classification des Commentaires Positifs ou Negatifs avec KNN")
+
 # Utiliser un formulaire au lieu d'un champ de texte
 with st.form("commentaire_form"):
     # Afficher le formulaire d'entrée de texte
