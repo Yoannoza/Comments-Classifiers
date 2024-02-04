@@ -32,9 +32,9 @@ knn_model.fit(X, data['mood'])
 # Prediction
 def predict(text):
     if text:
-        st.warning(f"before:{type(text)}")
+
         clean_sentences(text)
-        st.warning(f"after:{type(text)}")
+
         vectorised_text = vectorizer.transform(text)
 
         prediction = knn_model.predict(vectorised_text)
@@ -60,9 +60,9 @@ if bouton_prediction:
     if input:
         result = predict(input)
         if result == "Positif":
-            st.success(f"Commentaire {result} !!!", icon="✅")
+            st.success(f" ✅ Commentaire {result} !!!")
         else:
-            st.warning(f"Commentaire {result} !!!", icon="❌")
+            st.warning(f" ❌ Commentaire {result} !!!")
     else:
         st.warning("Veuillez entrer un commentaire pour la prédiction.")
 
