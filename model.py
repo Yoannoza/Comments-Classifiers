@@ -50,7 +50,7 @@ st.title("Classification des Commentaires Positifs ou Negatifs avec KNN")
 # Utiliser un formulaire au lieu d'un champ de texte
 with st.form("commentaire_form"):
     # Afficher le formulaire d'entrée de texte
-    input = st.text_input("Entrez votre Commentaire ici")
+    input = list(st.text_input("Entrez votre Commentaire ici"))
 
     # Bouton de prédiction centré avec une couleur simple
     bouton_prediction = st.form_submit_button("Prédire le Type de Commentaire", help="Appuyez pour prédire")
