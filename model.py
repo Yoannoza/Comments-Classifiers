@@ -31,7 +31,8 @@ knn_model.fit(X, data['mood'])
 
 # Prediction
 def predict(text):
-    if text:st.success(f"Text")
+    if text:
+        st.success(f"Text")
 
         clean_sentences(text)
 
