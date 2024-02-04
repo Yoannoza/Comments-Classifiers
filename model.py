@@ -40,7 +40,7 @@ def predict(text):
 
         return prediction[0]
     else: 
-        print("Text is none")
+        st.success(f"Text is None")
 
 
 # Afficher les données dans la page principale
