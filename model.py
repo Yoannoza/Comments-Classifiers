@@ -60,7 +60,7 @@ if bouton_prediction:
     if input:
         result = predict(input)
 
-        st.success(f"{result}")
+        st.success(f"{len(result)}")
         if result == "Positif":
             st.success(f" ✅ Commentaire {result} !!!")
         else:
