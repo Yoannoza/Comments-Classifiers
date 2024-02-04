@@ -62,7 +62,7 @@ if bouton_prediction:
         if result == "Positif":
             st.success(f" ✅ Commentaire {result} !!!")
         else:
-            st.warning(f" ❌ Commentaire {result} !!!")
+            st.warning(f" ❌ Commentaire Negatif !!!")
     else:
         st.warning("Veuillez entrer un commentaire pour la prédiction.")
 
