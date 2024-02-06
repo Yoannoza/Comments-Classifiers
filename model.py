@@ -23,7 +23,7 @@ data = pd.read_csv('dataset.csv')
 # Vectorization
 vectorizer = TfidfVectorizer()
 X = vectorizer.fit_transform(data['Comment'])
-print(len(vectorizer.get_feature_names_out()))
+
 
 # Modele
 knn_model = KNeighborsClassifier(n_neighbors=1)
