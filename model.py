@@ -23,6 +23,7 @@ data = pd.read_csv('dataset.csv')
 # Vectorization
 vectorizer = TfidfVectorizer()
 X = vectorizer.fit_transform(data['Comment'])
+print(len(vectorizer.get_feature_names_out()))
 
 # Modele
 knn_model = KNeighborsClassifier(n_neighbors=1)
@@ -50,7 +51,8 @@ st.title("Classification des Commentaires Positifs ou Negatifs avec KNN")
 # Utiliser un formulaire au lieu d'un champ de texte
 with st.form("commentaire_form"):
     # Afficher le formulaire d'entrée de texte
-    input = list(st.text_input("Entrez votre Commentaire ici"))
+    input = []
+    input.append(st.text_input("Entrez votre Commentaire ici"))
 
     # Bouton de prédiction centré avec une couleur simple
     bouton_prediction = st.form_submit_button("Prédire le Type de Commentaire", help="Appuyez pour prédire")
