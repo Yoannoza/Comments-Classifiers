@@ -60,9 +60,8 @@ with st.form("commentaire_form"):
 # Conditions pour la prédiction et le stockage des commentaires
 if bouton_prediction:
     if input:
-        result = predict(input)
+        result = predict(input)[0]
 
-        st.success(f"{len(result)}")
         if result == "Positif":
             st.success(f" ✅ Commentaire {result} !!!")
         else:
